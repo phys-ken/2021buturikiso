@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>slide.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="%E6%8E%88%E6%A5%AD%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A%E7%B4%B9%E4%BB%8B%E7%AC%AC2%E5%9B%9E%E5%88%86">授業振り返り紹介(第2回分)</h2>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81">授業のまとめ</h3>
+<ul>
+<li>時間と時刻の区別</li>
+<li>グラフを見るだけである程度の速さは分かる</li>
+<li>速さが速いほどグラフの傾きは急になり、速さが遅いとグラフの傾きはゆるやかになる。</li>
+</ul>
+<hr>
+<h3 id="%E6%84%9F%E6%83%B3">感想</h3>
+<ul>
+<li>周りの人達と意見を共有しながら行うのは、自分にはなかった意見が多く取り入れられとても面白かったです。</li>
+<li>物理がんばります。</li>
+<li>ありがとうございました。</li>
+</ul>
+<hr>
+<ul>
+<li>球体Bをもっと優しく扱って欲しいです</li>
+<li>書くことないんで「わぁ」とだけ書いときます( ・∇・)</li>
+<li>空を飛びたい</li>
+</ul>
+<hr>
+<h2 id="%E6%8E%88%E6%A5%AD%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A%E7%B4%B9%E4%BB%8B%E7%AC%AC3%E5%9B%9E%E5%88%86">授業振り返り紹介(第3回分)</h2>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81">授業のまとめ</h3>
+<ul>
+<li>
+<p>台車がどのように動くのか、グラフと一緒に求めて行ったこと</p>
+</li>
+<li>
+<p>この世界では、少しだけでも抵抗があること。</p>
+</li>
+<li>
+<p>グラフを読み取ることで、その物体がどのような動きをしているかが分かるのが、大切だと思いました。</p>
+</li>
+</ul>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81%EF%BC%92">授業のまとめ２</h3>
+<ul>
+<li>物体の動きからグラフを想像出来るようになること</li>
+</ul>
+<hr>
+<h3 id="%E6%84%9F%E6%83%B3">感想</h3>
+<ul>
+<li>グラフが少し難しかったです。</li>
+<li>分からないことを班の人に聞けるから良かった</li>
+<li>先生が電車の速度の動画を撮ったことに驚きました</li>
+<li>先生が1番好きな実験はなんですか🧪？
+<ul>
+<li>音楽が好きなので、音の実験はとても好きです。お楽しみに！</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="%E6%84%9F%E6%83%B3">感想(?)</h3>
+<ul>
+<li>椅子うるさい☹️
+<ul>
+<li>それな。</li>
+</ul>
+</li>
+<li>この物理室、傾くように設計したの誰なん？
+<ul>
+<li>それな。</li>
+</ul>
+</li>
+<li>トマト嫌いだけどトマトパスタは好きです
+<ul>
+<li>それな。</li>
+</ul>
+</li>
+<li>時計めっちゃ光に反射しますね。
+<ul>
+<li>それは初耳</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%BE%E3%81%A8%E3%82%81%E7%AC%AC%EF%BC%94%E5%9B%9E%E5%88%86">授業まとめ（第４回分）</h3>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81">授業のまとめ</h3>
+<ul>
+<li>1秒あたりの速度の変化を加速度（a）</li>
+<li>速さがだんだん早くなる運動では位置と時刻のグラフは二次関数っぽいグラフになる。また、傾きを急にするとグラフも急になる。</li>
+<li>記号や単位をちゃんと覚えておきたいです。</li>
+<li>速度の変化とかかった時間から加速度が求められることがわかりました。</li>
+</ul>
+<hr>
+<h3 id="%E6%84%9F%E6%83%B3">感想</h3>
+<ul>
+<li>中学で習ったようなグラフの線の感じ(？)が復習みたいに再確認できて良かった！</li>
+<li>加速の公式難しそうだね(੭ ᐕ))？</li>
+<li>前の人で前が見にくい、、、</li>
+</ul>
+<hr>
+<h3 id="%E6%84%9F%E6%83%B32">感想2</h3>
+<ul>
+<li>後ろにある傘🌂が気になりました。</li>
+<li>授業中に椅子の音がなくなる事が無くてずっとうるさい､､､</li>
+<li>うどんは好きですか
+<ul>
+<li>うどんは苦手です。</li>
+</ul>
+</li>
+<li>僕も京急好きです
+<ul>
+<li>いいね！私は1000系に搭載されているジーメンス社製のVVVFインバータ、通称ドレミファインバータがすごく好きです。車体整備で付け替えてしまっているので、もう最後の１台らしいよね。耳に焼き付けたいです。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>授業</p>
+<p>https://sites.google.com/site/shuxuejiaocaigongyousaito/home/shu-xue3/ding-ji-fennoiroirona-wen-ti-yi-lan/qu-fen-qiu-ji-fa</p>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%BE%E3%81%A8%E3%82%81%E7%AC%AC5%E5%9B%9E%E5%88%86">授業まとめ（第5回分）</h3>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%AE%E8%A6%81%E7%B4%84">授業の要約</h3>
+<ul>
+<li>変位の求め方を覚えてグラフを書けるようにする。</li>
+<li>速度と時間のグラフで面積を求めれば変位になること</li>
+<li>数字だけ見るのではなく、そこからそれが
+どんな運動を表しているのかを想像することが大切だと思いました。</li>
+</ul>
+<hr>
+<h3 id="%E6%84%9F%E6%83%B3">感想</h3>
+<ul>
+<li>変位の計算意外と簡単でした</li>
+<li>面積を求めると変位が出てくることがわかりました！自分的には普通に変位を考えるよりも簡単でした。
+<ul>
+<li>色々な方法で同じ答えが出るのが物理の楽しいところです。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="%E8%AA%B2%E9%A1%8C%E3%81%AE%E5%9B%9E%E7%AD%94%E6%A1%88">課題の回答案</h3>
+<ul>
+<li>花の国の汽車ですか？笑
+てきとーです笑</li>
+<li>ジェットコースター</li>
+<li>難しかったけどバスかなと思いました。</li>
+<li>横須賀にいないので分かりませんでした</li>
+<li>セグウェイとか？笑</li>
+</ul>
+<hr>
+<h3 id="%E8%BF%94%E4%BA%8B%E3%81%97%E3%81%AA%E3%81%84%E3%81%9E%E3%81%AA%E3%82%84%E3%81%A4">返事しないぞ！なやつ。</h3>
+<ul>
+<li>セブンとななの違いはなんだと思いますか？</li>
+<li>俺はキノコの里よりたけのこの里派です( ͡° ͜ʖ ͡°)</li>
+<li>いくら丼が食べたい</li>
+<li>先生のあだ名は球体Aです</li>
+<li>私は京急の2100系が好きです
+<ul>
+<li>これは返事したい...けど我慢。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%BE%E3%81%A8%E3%82%81%E7%AC%AC%EF%BC%96%E5%9B%9E%E5%88%86">授業まとめ（第６回分）</h3>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81">授業のまとめ</h3>
+<ul>
+<li>速度は最初の速度＋加速度×時間で求められることがわかったのと、面積で考えるとわかりやすいことがわかった。</li>
+<li>公式を上手く活用する</li>
+</ul>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%AE%E6%84%9F%E6%83%B3">授業の感想</h3>
+<ul>
+<li>公式がむずい</li>
+<li>公式に当てはめて計算するのが難しかった</li>
+<li>速度と加速度をがごちゃごちゃになって難しかったです。</li>
+<li>棚の上のパンダ死んでるみたいで可哀想</li>
+</ul>
+<hr>
+<h3 id="%E3%81%A1%E3%82%87%E3%81%84%E3%81%A8%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88">ちょいとコメント</h3>
+<ul>
+<li>公式については、代入するだけです。</li>
+<li>試験前に時間があったら、練習問題もやります。</li>
+<li>授業では、話し合いメインで進めます。</li>
+</ul>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E6%8C%AF%E3%82%8A%E8%BF%94%E3%82%8A%E7%AC%AC%EF%BC%97%E5%9B%9E%E5%88%86">授業振り返り（第７回分）</h3>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81">授業のまとめ</h3>
+<ul>
+<li>斜面を登って下る運動のグラフはマイナスの方に一直線にのびる</li>
+<li>だんだん遅くなる運動も加速であるということ、v-tグラフの横軸より下の部分の面積は負の向きに進んだ距離を表しているということ</li>
+<li>遅くなる時は加速度がマイナスになる</li>
+</ul>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%AE%E6%84%9F%E6%83%B3%E2%91%A0">授業の感想①</h3>
+<ul>
+<li>向きに注意しなければならないことを
+忘れてしまっていました。</li>
+<li>おすすめの勉強法ありますか？
+<ul>
+<li>授業プリントで実験結果の確認</li>
+<li>教科書の例題(解説あるやつ)</li>
+<li>アクセスノート</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="%E6%8E%88%E6%A5%AD%E3%81%AE%E6%84%9F%E6%83%B3%E2%91%A1">授業の感想②</h3>
+<ul>
+<li>ロイロノートにグラフを書くのが難しかった。
+<ul>
+<li>→こういう意見まじ参考になる。</li>
+</ul>
+</li>
+<li>先生のメガネ光ってます
+<ul>
+<li>→こういう意見まじ参考にならない。</li>
+</ul>
+</li>
+<li>アニメは好きですか？僕は好きですヘ(°◇、°)ノ
+<ul>
+<li>アニメはあまり好きじゃないかなあ。小説とかの方が進みが早くて好きです。</li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>
