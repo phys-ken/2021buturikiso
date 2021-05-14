@@ -234,6 +234,6 @@ https://sites.google.com/site/shuxuejiaocaigongyousaito/home/shu-xue3/ding-ji-fe
 * 物理公式多いですね。大変ですが頑張ります。
     * 覚えなければいけない式は意外とないかも?
 * 先生の使っているスマホの機種は何ですか？
-    * 泣く子も黙る$iPhone 12 Pro$です。
+    * 泣く子も黙るiPhone 12 Proです。
 * 僕も春日語カレンダー持ってます
     * まじか！仕事が忙しくて注文できなかったんだわ...。
