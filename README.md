@@ -9,3 +9,7 @@
 ## 6月 力
 * [スライド](https://phys-ken.github.io/2021buturikiso/2.F/export)
 * [Webページ版資料](https://phys-ken.github.io/2021buturikiso/2.F/2_F.html)
+
+## 11月 熱とエネルギー
+* [スライド](https://phys-ken.github.io/2021buturikiso/4_Heat/export)
+* [Webページ版資料](https://phys-ken.github.io/2021buturikiso/4_Heat/heat.html)
